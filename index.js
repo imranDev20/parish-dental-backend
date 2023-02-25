@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 });
 
 function sendContactMail(contactData, res) {
-  const { firstName, lastName, phone, email, date, time, message } =
+  const { firstName, lastName, phone, email, dob, address, message } =
     contactData;
 
   const mailOptions = {
@@ -28,7 +28,7 @@ function sendContactMail(contactData, res) {
     html: `
           <div>
             <p>Hello ${firstName} ${lastName},</p>
-            <p>You have requested an appointment in the ${time} on ${date} with a dentist at Parish Dental Practice. We will call you shortly on ${phone} or email you on ${email}. Please, be patient.</p>
+            <p>You have requested an appointment with a dentist at Parish Dental Practice. We will call you shortly on ${phone} or email you on ${email}. Please, be patient.</p>
             <p>Best regards.</p>
           </div>
         `,
@@ -54,8 +54,8 @@ function sendContactMail(contactData, res) {
             <p>Name: ${firstName} ${lastName}</p>
             <p>Phone: ${phone}</p>    
             <p>Email: ${email}</p>
-            <p>Appointment Date: ${date}</p> 
-            <p>Preferred Time: ${time}</p>
+            <p>Date of Birth: ${dob}</p> 
+            <p>Address: ${address}</p>
             <p>Message: ${message}</p> 
           </div>
         `,
