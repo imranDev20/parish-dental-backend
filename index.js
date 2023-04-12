@@ -28,7 +28,38 @@ function sendContactMail(contactData, res) {
     html: `
           <div>
             <p>Hello ${firstName} ${lastName},</p>
-            <p>You have requested an appointment with a dentist at Parish Dental Practice. We will call you shortly on ${phone} or email you on ${email}. Please, be patient.</p>
+            <p>You have requested an appointment with a dentist at Parish Dental Practice.</p>
+            <p>
+              Parish dental are approaching full capacity on our NHS list. We are currently prioritising patients who are under 18 for our NHS list.
+            </p>
+
+            <p>
+              If you meet this criteria We will call you shortly on ${phone} or email you on ${email}.
+            </p>
+            <p>
+              Please note, if you do not meet this criteria at this time you will be automatically placed on our new patients waiting list and will be contacted as soon as a NHS space becomes available.
+            </p>
+
+            <p>
+              If you require urgent emergency dental care we can offer you a same day appointment through emergency247dentist
+            </p>
+
+             <p>
+              You can book online via <a href="https://emergency247dentist.co.uk/" target="_blank">www.emergency247dentist.co.uk</a> <br />
+              Or call on <a href="tel:0113 332 8354">0113 332 8354</a> <br />
+              Or email <a href="mailto:hello@emergency247dentist.co.uk">hello@emergency247dentist.co.uk</a> <br />
+            </p>
+             <p>
+              We do currently have spaces available on our private patient list, an examination starts at £45.00.
+            </p>
+
+             <p>
+              You can view our full private price list via <br />
+              <a href="https://www.parishdental.co.uk/pricing">www.parishdental.co.uk/pricing</a>
+            </p>
+            <p>
+              If you would like to proceed with a private appointment please respond to this email.
+            </p>
             <p>Best regards.</p>
           </div>
         `,
