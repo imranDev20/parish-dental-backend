@@ -37,7 +37,7 @@ function sendContactMail(contactData, res) {
               If you meet this criteria We will call you shortly on ${phone} or email you on ${email}.
             </p>
             <p>
-              Please note, if you do not meet this criteria at this time you will be automatically placed on our new patients waiting list and will be contacted as soon as a NHS space becomes available.
+              Please note, if you do not meet this criteria at this time you will be automatically placed on our NHS patients waiting list and will be contacted as soon as an NHS space becomes available.
             </p>
 
             <p>
@@ -50,7 +50,7 @@ function sendContactMail(contactData, res) {
               Or email <a href="mailto:hello@emergency247dentist.co.uk">hello@emergency247dentist.co.uk</a> <br />
             </p>
              <p>
-              We do currently have spaces available on our private patient list, an examination starts at £45.00.
+              We do currently have spaces available on our private patient list, an examination starts at £35.00.
             </p>
 
              <p>
