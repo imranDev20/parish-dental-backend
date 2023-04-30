@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+const Transport = require("nodemailer-sendinblue-transport");
 require("dotenv").config();
 const app = express();
 
@@ -8,14 +9,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASSWORD,
-  },
-  from: process.env.EMAIL,
-});
+const transporter = nodemailer.createTransport(
+  // new Transport({ apiKey: process.env.SENDINBLUE_API_KEY })
+  {
+    host: "smtp-relay.sendinblue.com",
+    port: 587,
+    auth: {
+      user: process.env.SENDINGBLUE_LOGIN,
+      pass: process.env.SENDINGBLUE_PASS,
+    },
+  }
+);
 
 function sendContactMail(contactData, res) {
   const { firstName, lastName, phone, email, dob, address, message } =
