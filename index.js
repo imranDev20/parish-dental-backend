@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-function sendContactMail(contactData, res) {
+function appointmentMail(contactData, res) {
   const { firstName, lastName, phone, email, dob, address, message } =
     contactData;
 
@@ -103,9 +103,77 @@ function sendContactMail(contactData, res) {
   });
 }
 
+function contactMail(contactData, res) {
+  const { firstName, lastName, phone, email, dob, address, message } =
+    contactData;
+
+  const mailOptions = {
+    from: '"Parish Dental Practice" <parishdental@gmail.com>',
+    to: email,
+    subject: `Your request for an appointment was received successfully`,
+    text: ``,
+    html: `
+          <div>
+            <p>Dear ${firstName} ${lastName},</p>
+            <p>Thank you for contacting Parish Dental Practice. We have received your message and will respond to your inquiry as soon as possible.</p>
+            
+            <p>
+            Our team strives to provide excellent customer service, and we appreciate your patience during this process. If your inquiry requires immediate attention, please feel free to call us at 
+            <a href="tel:01132638509">0113 263 8509</a>.
+            </p>
+
+            <p>
+              We look forward to assisting you with your dental needs.
+            </p>
+            <p>Best regards.</p>
+            <p>Parish Dental Practice</p>
+          </div>
+        `,
+  };
+
+  transporter.sendMail(mailOptions, function (err, data) {
+    if (err) {
+      console.log("something is wrong", err);
+      return res.status(400).send("Internal Server Error");
+    } else {
+      return res.status(200).send("Mail Sent");
+    }
+  });
+
+  const mailOptions2 = {
+    from: '"Parish Dental Practice" <parishdental@gmail.com>',
+    to: "parishdental@gmail.com",
+    subject: `You have a new appointment request from ${firstName} ${lastName}`,
+    text: ``,
+    html: `
+          <div>
+            <h3>Patient details:</h3>
+            <p>Name: ${firstName} ${lastName}</p>
+            <p>Phone: ${phone}</p>    
+            <p>Email: ${email}</p>
+            <p>Message: ${message}</p>
+          </div>
+        `,
+  };
+
+  transporter.sendMail(mailOptions2, function (err, data) {
+    if (err) {
+      console.log("something is wrong", err);
+      return res.status(400).send("Internal Server Error");
+    } else {
+      return res.status(200).send("Mail Sent");
+    }
+  });
+}
+
+app.post("/appointment", (req, res) => {
+  const contactData = req.body;
+  appointmentMail(contactData, res);
+});
+
 app.post("/contact", (req, res) => {
   const contactData = req.body;
-  sendContactMail(contactData, res);
+  contactMail(contactData, res);
 });
 
 app.get("/", (req, res) => {
