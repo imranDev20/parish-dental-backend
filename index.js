@@ -104,13 +104,12 @@ function appointmentMail(contactData, res) {
 }
 
 function contactMail(contactData, res) {
-  const { firstName, lastName, phone, email, dob, address, message } =
-    contactData;
+  const { firstName, lastName, phone, email, message } = contactData;
 
   const mailOptions = {
     from: '"Parish Dental Practice" <parishdental@gmail.com>',
     to: email,
-    subject: `Your request for an appointment was received successfully`,
+    subject: `Thank you for your enquiry at Parish Dental Practice`,
     text: ``,
     html: `
           <div>
@@ -147,7 +146,7 @@ function contactMail(contactData, res) {
     text: ``,
     html: `
           <div>
-            <h3>Patient details:</h3>
+            <h3>Enquirer details:</h3>
             <p>Name: ${firstName} ${lastName}</p>
             <p>Phone: ${phone}</p>    
             <p>Email: ${email}</p>
